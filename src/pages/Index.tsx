@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -72,6 +73,7 @@ const mockProducts: Product[] = [
 ];
 
 const Index = () => {
+  const navigate = useNavigate();
   const [cart, setCart] = useState<CartItem[]>([]);
   const [activeCategory, setActiveCategory] = useState('all');
   const [userBalance] = useState(1500);
@@ -128,11 +130,11 @@ const Index = () => {
                 <Icon name="Home" size={20} />
                 <span>Главная</span>
               </Button>
-              <Button variant="ghost" className="gap-2">
+              <Button variant="ghost" className="gap-2" onClick={() => navigate('/profile')}>
                 <Icon name="User" size={20} />
                 <span>Профиль</span>
               </Button>
-              <Button variant="ghost" className="gap-2">
+              <Button variant="ghost" className="gap-2" onClick={() => navigate('/contests')}>
                 <Icon name="Trophy" size={20} />
                 <span>Конкурсы</span>
               </Button>
@@ -323,7 +325,7 @@ const Index = () => {
                 </p>
               </div>
             </div>
-            <Button variant="outline" className="gap-2">
+            <Button variant="outline" className="gap-2" onClick={() => navigate('/contests')}>
               <Icon name="Trophy" size={16} />
               <span>Подробнее</span>
             </Button>
@@ -334,15 +336,15 @@ const Index = () => {
       {/* Mobile Bottom Nav */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-border shadow-lg">
         <div className="grid grid-cols-4 gap-1 p-2">
-          <Button variant="ghost" className="flex-col h-auto py-2 gap-1">
+          <Button variant="default" className="flex-col h-auto py-2 gap-1">
             <Icon name="Home" size={20} />
             <span className="text-xs">Главная</span>
           </Button>
-          <Button variant="ghost" className="flex-col h-auto py-2 gap-1">
+          <Button variant="ghost" className="flex-col h-auto py-2 gap-1" onClick={() => navigate('/profile')}>
             <Icon name="User" size={20} />
             <span className="text-xs">Профиль</span>
           </Button>
-          <Button variant="ghost" className="flex-col h-auto py-2 gap-1">
+          <Button variant="ghost" className="flex-col h-auto py-2 gap-1" onClick={() => navigate('/contests')}>
             <Icon name="Trophy" size={20} />
             <span className="text-xs">Конкурсы</span>
           </Button>
